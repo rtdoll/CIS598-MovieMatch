@@ -1,3 +1,4 @@
+
 const imgSrc = "images/";
 const jpg = ".jpg";
 let movies = ["Avatar", "Insidious", "RV", "The Adventures of Wolf Boy", "The Fault In Our Stars", "The Hobbit"];
@@ -11,11 +12,11 @@ let userFlag = 0; // 0 for user 1 for user1
 
 function likeMovie() {
     if (userFlag == 0) {
-        user.push(document.getElementById("movie-name"));
+        user.push(document.getElementById("movie-name").innerHTML);
         userIndex++;
     }
     else {
-        user1.push(document.getElementById("movie-name"));
+        user1.push(document.getElementById("movie-name").innerHTML);
         user1Index++;
     }
     nextMovie();
@@ -31,7 +32,8 @@ function nextMovie() {
         setupNextUser();
     }
     else {
-        window.location.href = "C:/Users/Ryan/Development/CIS598-MovieMatch/partner.html"; //change to reflect actual webpage not local
+        findMatches();
+        setCookie();
     }
 }
 
@@ -55,11 +57,18 @@ function startNextUser() {
 
 function findMatches() {
     for (i = 0; i < user.length; i++) {
-        for (f = 0; f < user1.length; i++) {
+        for (f = 0; f < user1.length; f++) {
             if (user[i] == user1[f]) {
                 matches.push(user[i]);
                 break;
             }
         }
     }
+}
+
+function setCookie() {
+    var jsonarr = JSON.stringify(matches);
+    document.cookie += "movieMatches=test;";
+    alert(document.cookie);
+    window.location.href = "C:/Users/Ryan/Development/CIS598-MovieMatch/partner.html"; //change to reflect actual webpage not local
 }
