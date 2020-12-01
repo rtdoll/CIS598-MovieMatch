@@ -1,11 +1,11 @@
-const urlParams = new URLSearchParams(window.location.search);
-const matchedMovies = decodeURI(urlParams.getAll('movieMatches')).split(",");
+const urlParams = new URLSearchParams(window.location.search); //define object to get url params
+const matchedMovies = decodeURI(urlParams.getAll('movieMatches')).split(","); // decode url and split to array
 
-console.log(typeof matchedMovies);
-let list = document.getElementById("movieList");
+let list = document.getElementById("movieList"); // define ul item to add movies to
 
 matchedMovies.forEach(element => addItem(element));
 
+// add each movie string to list
 function addItem(item) {
     let le = document.createElement('li');
     le.textContent = item;
