@@ -33,7 +33,11 @@ function nextMovie() {
     }
     else {
         findMatches();
-        setCookie();
+        document.getElementById("sike").style.visibility = "hidden";
+        document.getElementById("like").style.visibility = "hidden";
+        document.getElementById("movie-img").src = "";
+        document.getElementById("movie-name").innerText = "Press submit to get your results!";
+        document.getElementById("submit").style.visibility = "visible";
     }
 }
 
@@ -64,6 +68,7 @@ function findMatches() {
             }
         }
     }
+    document.getElementById("movieData").value = encodeURI(matches);
 }
 
 function setCookie() {
