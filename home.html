@@ -20,16 +20,19 @@
             <h4 id="movie-name">Avatar</h4>
         </div>
 
-        <div class="container d-flex justify-content-center mb-3 mt-3">
-            <div class="btn-group pr-3">
+        <div class="container d-flex justify-content-center">
+            <div class="btn-group" id="sike">
                 <button class="btn-lg btn-danger" onclick="nextMovie()">Sike</button>
             </div>
-            <div class="btn-group pl-3">
+            <div class="btn-group" id="start" style="visibility: hidden">
+                <button class="btn-lg btn-primary" onclick="startNextUser()">Start</button>
+            </div>
+            <div class="btn-group" id="like">
                 <button class="btn-lg btn-success" onclick="likeMovie()">Like</button>
             </div>
         </div>
 
-        <div class="progress container d-flex justify-content-center" style="width: 50%">
+        <div class="progress container d-flex justify-content-center invisible" style="width: 50%">
             <div class="progress-bar progress-bar-success progress-bar-striped active" style="width: 0%">
                 0%
             </div>
@@ -41,5 +44,4 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     </body>
-
 </html>
