@@ -1,6 +1,7 @@
 const imgSrc = "images/";
 const jpg = ".jpg";
-let movies = ["Avatar", "Insidious", "RV", "The Adventures of Wolf Boy", "The Fault In Our Stars", "The Hobbit"];
+const progressInc = 5;
+let movies = ["A Christmas Story", "Black Widow", "Elf", "Frozen", "Knives Out", "The Climb", "The Godfather, Coda", "The Santa Clause", "True To The Game 2", "Wonder Woman 1984"];
 let user = [];
 let user1 = [];
 let matches = [];
@@ -8,6 +9,15 @@ let moviesIndex = 0;
 let userIndex = 0; // track movies liked by first user
 let user1Index = 0; // track movies liked by second user
 let userFlag = 0; // 0 for user 1 for user1
+
+window.onload = function() {
+    setStartMovie();
+}
+
+function setStartMovie() {
+    document.getElementById("movie-img").src = imgSrc.concat(movies[moviesIndex]).concat(jpg);
+    document.getElementById("movie-name").innerHTML = movies[0];
+}
 
 // add movie to users array if they liked it
 function likeMovie() {
@@ -42,6 +52,7 @@ function nextMovie() {
         document.getElementById("movie-name").innerText = "Press submit to get your results!";
         document.getElementById("submit").style.visibility = "visible";
     }
+    updateProgressBar();
 }
 
 // reset index values and display prompt for second user
@@ -57,8 +68,7 @@ function setupNextUser() {
 
 // set movies image/name and like/sike buttons for second user
 function startNextUser() {
-    document.getElementById("movie-img").src = imgSrc.concat(movies[moviesIndex]).concat(jpg);
-    document.getElementById("movie-name").innerText = movies[moviesIndex];
+    setStartMovie();
     document.getElementById("start").style.visibility = "hidden";
     document.getElementById("sike").style.visibility = "visible";
     document.getElementById("like").style.visibility = "visible";
@@ -76,4 +86,9 @@ function findMatches() {
         }
     }
     document.getElementById("movieData").value = encodeURI(matches);
+}
+
+function updateProgressBar() {
+    let progress = parseInt(document.getElementById("progress-bar").style.width) + progressInc;
+    document.getElementById("progress-bar").style.width = progress.toString().concat("%");
 }

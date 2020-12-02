@@ -3,46 +3,50 @@
     <head>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     </head>
-    <body>
-        <div class="d-flex justify-content-center">
-            <h1 class="text-center">
-                Movie Match
-            </h1>
-        </div>
+    <body style="background-color: rgb(146, 235, 235);">
+        <div class="border-right border-left">
 
-        <div class="d-flex justify-content-center medias">
-            <div class="w-25">
-                <img src="images/Avatar.jpg" class="img-fluid" id="movie-img">
+            <div class="d-flex justify-content-center">
+                <h1 class="text-center">
+                    Movie Match
+                </h1>
             </div>
-        </div>
 
-        <div class="container d-flex justify-content-center mb-3 mt-3">
-            <h4 id="movie-name">Avatar</h4>
-        </div>
+            <div class="d-flex justify-content-center">
+                <div>
+                    <img src="" class="img-fluid" id="movie-img">
+                </div>
+            </div>
 
-        <div class="container d-flex justify-content-center">
-            <div class="btn-group" id="sike">
-                <button class="btn-lg btn-danger" onclick="nextMovie()">Sike</button>
+            <div class="container d-flex justify-content-center mb-3 mt-3">
+                <h4 id="movie-name"></h4>
             </div>
-            <div class="btn-group" id="start" style="visibility: hidden">
-                <button class="btn-lg btn-primary" onclick="startNextUser()">Start</button>
-            </div>
-            <div class="btn-group" id="like">
-                <button class="btn-lg btn-success" onclick="likeMovie()">Like</button>
-            </div>
-        </div>
 
-        <div class="container d-flex justify-content-center">
-            <form action="partner.html" method="GET">
-                <input type="text" name="movieMatches" class="invisible" id="movieData"/>
-                <input type="submit" value="Submit" style="visibility: hidden" id="submit"/>
-            </form>
-        </div>
-
-        <div class="progress container d-flex justify-content-center invisible" style="width: 50%">
-            <div class="progress-bar progress-bar-success progress-bar-striped active" style="width: 0%">
-                0%
+            <div class="container d-flex justify-content-center">
+                <div class="btn-group" id="sike">
+                    <button class="btn-lg btn-danger" onclick="nextMovie()">Sike</button>
+                </div>
+                <div class="btn-group" id="start" style="visibility: hidden">
+                    <button class="btn-lg btn-primary" onclick="startNextUser()">Start</button>
+                </div>
+                <div class="btn-group" id="like">
+                    <button class="btn-lg btn-success" onclick="likeMovie()">Like</button>
+                </div>
             </div>
+
+            <div class="container d-flex justify-content-center">
+                <form action="partner.html" method="GET">
+                    <input class="btn-lg btn-success" type="submit" value="Submit" style="visibility: hidden; margin-left: 33%;" id="submit"/>
+                    <input type="text" name="movieMatches" class="invisible" id="movieData"/>
+                </form>
+            </div>
+
+            <div class="progress container d-flex justify-content-center" style="width: 50%">
+                <div class="progress-bar progress-bar-success progress-bar-striped active" id="progress-bar" style="width: 0%">
+                    
+                </div>
+            </div>
+
         </div>
         
         <script src="js/movies.js"></script>
