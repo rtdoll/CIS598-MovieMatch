@@ -2,6 +2,7 @@ const imgSrc = "images/";
 const jpg = ".jpg";
 const progressInc = 5;
 let movies = ["A Christmas Story", "Black Widow", "Elf", "Frozen", "Knives Out", "The Climb", "The Godfather, Coda", "The Santa Clause", "True To The Game 2", "Wonder Woman 1984"];
+let m = [];
 let user = [];
 let user1 = [];
 let matches = [];
@@ -12,6 +13,30 @@ let userFlag = 0; // 0 for user 1 for user1
 
 window.onload = function() {
     setStartMovie();
+    getMovies();
+}
+
+function getMovies() {
+    fetch('https://api.sandbox.amctheatres.com/', {
+        method: 'GET',
+        mode: 'cors',
+        credentials: 'same-origin',
+        headers: {
+            'X-AMC-Vendor-Key': '148560FD-6F17-4676-BF9F-773A5F5FADC0',
+            'Access-Control-Allow-Origin': '*'
+        },
+        referrerPolicy: 'no-referrer',
+    }).then(function (response) {
+        if (response.ok) {
+            return response.json();
+        } else {
+            return Promise.reject (response);
+        }
+    }).then( function (data) {
+        console.log(data);
+    }).catch(function (err) {
+        console.warn("Something went wrong.", err);
+    });
 }
 
 function setStartMovie() {
