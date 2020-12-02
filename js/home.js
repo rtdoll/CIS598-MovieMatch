@@ -9,18 +9,18 @@ let matches = [];
 let moviesIndex = 0;
 let userIndex = 0; // track movies liked by first user
 let user1Index = 0; // track movies liked by second user
-let userFlag = 0; // 0 for user 1 for user1
+let userFlag = 0; // 0 for user, 1 for user1
 
 window.onload = function() {
     setStartMovie();
-    getMovies();
+    //getMovies();
 }
 
 function getMovies() {
     fetch('https://api.sandbox.amctheatres.com/', {
         method: 'GET',
         mode: 'cors',
-        credentials: 'same-origin',
+        credentials: 'omit',
         headers: {
             'X-AMC-Vendor-Key': '148560FD-6F17-4676-BF9F-773A5F5FADC0',
             'Access-Control-Allow-Origin': '*'
@@ -70,14 +70,26 @@ function nextMovie() {
     }
     // second user has finished, displays submit button to get results
     else {
-        findMatches();
-        document.getElementById("sike").style.visibility = "hidden";
-        document.getElementById("like").style.visibility = "hidden";
-        document.getElementById("movie-img").src = "";
-        document.getElementById("movie-name").innerText = "Press submit to get your results!";
-        document.getElementById("submit").style.visibility = "visible";
+        setupSubmit();
     }
     updateProgressBar();
+}
+
+function earlyStop() {
+    if (userFlag == 0)
+        setupNextUser();
+    else
+        setupSubmit();
+}
+
+function setupSubmit() {
+    findMatches();
+    document.getElementById("sike").style.visibility = "hidden";
+    document.getElementById("like").style.visibility = "hidden";
+    document.getElementById("done").style.visibility = "hidden";
+    document.getElementById("movie-img").src = "";
+    document.getElementById("movie-name").innerText = "Press submit to get your results!";
+    document.getElementById("submit").style.visibility = "visible";
 }
 
 // reset index values and display prompt for second user
@@ -87,6 +99,7 @@ function setupNextUser() {
     document.getElementById("movie-img").src = "";
     document.getElementById("movie-name").innerText = "Now for the 2nd person!";
     document.getElementById("start").style.visibility = "visible";
+    document.getElementById("done").style.visibility = "hidden";
     document.getElementById("sike").style.visibility = "hidden";
     document.getElementById("like").style.visibility = "hidden";
 }
@@ -95,6 +108,7 @@ function setupNextUser() {
 function startNextUser() {
     setStartMovie();
     document.getElementById("start").style.visibility = "hidden";
+    document.getElementById("done").style.visibility = "visible";
     document.getElementById("sike").style.visibility = "visible";
     document.getElementById("like").style.visibility = "visible";
 }
